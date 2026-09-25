@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duque Obra · Duque Arquitectura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--ink:#0F172A;--ink2:#334155;--mute:#64748B;--line:rgba(15,23,42,.08);
+ --aurora:linear-gradient(120deg,#5B5BF7 0%,#A855F7 55%,#EC4899 100%)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#F4F6FA}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow:hidden}
+.bar{height:54px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px;
+ background:rgba(255,255,255,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);position:relative;z-index:5}
+.bar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--aurora);opacity:.85}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.01em;white-space:nowrap}
+.brand small{font-weight:500;color:var(--mute);font-size:12.5px}
+.seg{display:flex;background:rgba(15,23,42,.05);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.seg button{font-family:inherit;border:0;background:none;cursor:pointer;padding:7px 16px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--ink2);white-space:nowrap}
+.seg button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(15,23,42,.12)}
+.seg button:focus-visible{outline:2px solid #5B5BF7;outline-offset:2px}
+.by{font-size:12px;color:var(--mute);white-space:nowrap}
+.stage{flex:1;position:relative;min-height:0}
+.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:none;background:#F4F6FA}
+.stage iframe.on{display:block}
+@media (max-width:720px){.by,.brand small{display:none}.bar{padding:0 12px}.seg button{padding:7px 12px}}
+@media (max-width:480px){.brand .t{display:none}.seg button{font-size:13px;padding:7px 11px}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+ <div class="brand">
+  <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B5BF7"/><stop offset=".55" stop-color="#A855F7"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M9 24V8h6.5a8 8 0 0 1 0 16z" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M9 16h8" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".55"/></svg>
+  <span class="t">Duque Obra</span> <small>· Duque Arquitectura</small>
+ </div>
+ <nav class="seg" role="tablist" aria-label="Vistas">
+  <button role="tab" id="t-como" data-v="como-funciona" aria-controls="f-como">Cómo funciona</button>
+  <button role="tab" id="t-proto" data-v="prototipo" aria-controls="f-proto">Prototipo</button>
+ </nav>
+ <div class="by">Desarrollado por Pisteyo</div>
+</header>
+
+<main class="stage">
+ <iframe id="f-como" title="Cómo funciona" src="como-funciona.html"></iframe>
+ <iframe id="f-proto" title="Prototipo Duque Obra" src="prototipo.html"></iframe>
+</main>
+
+<script>
+/* Una sola URL con dos vistas.
+   Enlaces directos: #como-funciona, #prototipo, o una pantalla del prototipo: #prototipo/proyecto/cedro/actas */
+const V = {
+ 'como-funciona': {tab: document.getElementById('t-como'),  frame: document.getElementById('f-como'),  title: 'Duque Obra · Cómo funciona'},
+ 'prototipo':     {tab: document.getElementById('t-proto'), frame: document.getElementById('f-proto'), title: 'Duque Obra · Prototipo'}
+};
+const DEFAULT = 'como-funciona';
+
+function parse(){
+ const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+ const [v, ...rest] = h.split('/');
+ return {view: V[v] ? v : DEFAULT, sub: rest.join('/')};
+}
+
+function show(view, sub){
+ for (const k in V){
+  const on = k === view;
+  V[k].frame.classList.toggle('on', on);
+  V[k].tab.setAttribute('aria-selected', on);
+  V[k].tab.tabIndex = on ? 0 : -1;
+ }
+ document.title = V[view].title;
+ if (view === 'prototipo' && sub){
+  try { V.prototipo.frame.contentWindow.location.hash = '#/' + sub; } catch(e){}
+ }
+ // foco en la vista activa para que funcionen las flechas del teclado en "Paso a paso"
+ setTimeout(() => { try { V[view].frame.contentWindow.focus(); } catch(e){} }, 30);
+}
+
+function go(view){
+ if (parse().view !== view) history.replaceState(null, '', '#' + view);
+ show(view);
+}
+
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { b.blur(); go(b.dataset.v); }));
+
+// si el foco queda en la barra, las teclas de navegación se reenvían a la vista activa
+// (así las flechas siempre mueven el "Paso a paso" y nunca cambian de pestaña)
+const FWD = ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
+document.addEventListener('keydown', e => {
+ if (!FWD.includes(e.key)) return;
+ const f = V[parse().view].frame;
+ try {
+  f.contentDocument.dispatchEvent(new KeyboardEvent('keydown', {key: e.key, code: e.code, keyCode: e.keyCode, bubbles: true, cancelable: true}));
+  f.contentWindow.focus();
+  e.preventDefault();
+ } catch(err){}
+});
+window.addEventListener('hashchange', () => { const p = parse(); show(p.view, p.sub); });
+
+// enlace directo a una pantalla del prototipo, aplicado cuando el iframe termina de cargar
+V.prototipo.frame.addEventListener('load', () => {
+ const p = parse();
+ if (p.view === 'prototipo' && p.sub){ try { V.prototipo.frame.contentWindow.location.hash = '#/' + p.sub; } catch(e){} }
+});
+
+const p0 = parse(); show(p0.view, p0.sub);
+</script>
+</body>
+</html>
