@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duque Obra · Cómo funciona</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#0F172A;--ink2:#334155;--mute:#64748B;--soft:#94A3B8;--line:rgba(15,23,42,.08);--indigo:#5B5BF7;
+ --aurora:linear-gradient(120deg,#5B5BF7 0%,#A855F7 55%,#EC4899 100%);--ok:#047857;--okbg:#D1FAE5;--warn:#B45309;--warnbg:#FEF3C7;--risk:#B91C1C;--riskbg:#FEE2E2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
+ background:radial-gradient(1100px 600px at 90% -10%,rgba(165,180,252,.55),transparent 60%),radial-gradient(900px 600px at -10% 40%,rgba(216,180,254,.38),transparent 60%),radial-gradient(900px 500px at 60% 110%,rgba(167,243,208,.4),transparent 60%),#F4F6FA;background-attachment:fixed}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:rgba(244,246,250,.72);border-bottom:1px solid var(--line)}
+.top .in{max-width:1280px;margin:0 auto;padding:14px 40px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.brand i{font-style:normal;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--aurora);color:#fff}
+.top nav{display:flex;gap:4px;margin-left:auto}
+.top nav a{font-size:13.5px;font-weight:500;color:var(--ink2);text-decoration:none;padding:8px 14px;border-radius:999px}
+.top nav a:hover{background:#fff}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+section{padding:64px 0 24px;scroll-margin-top:60px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--mute)}
+.ai{font-size:12.5px;font-weight:700;background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{font-size:54px;line-height:1.05;letter-spacing:-.035em;margin:14px 0 16px;font-weight:800}
+h2{font-size:34px;letter-spacing:-.03em;margin:8px 0 10px;font-weight:700}
+.lead{font-size:19px;line-height:1.55;color:var(--ink2);max-width:760px}
+.card{background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:22px;box-shadow:0 1px 2px rgba(15,23,42,.03),0 12px 32px rgba(15,23,42,.05)}
+.grad{border:1.5px solid transparent;background:linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,.95)) padding-box,var(--aurora) border-box}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.t-diff{background:#EEF0FF;color:#4338CA}.t-eq{background:#F1F5F9;color:#475569}.t-f2{background:#FDF2F8;color:#BE185D}
+
+/* hero */
+.hero{padding:70px 0 10px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.keys{display:grid;gap:12px}
+.key{display:flex;gap:14px;align-items:flex-start;padding:18px 20px}
+.key .n{width:34px;height:34px;border-radius:11px;background:var(--aurora);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.key b{display:block;font-size:15.5px;margin-bottom:3px}.key span{font-size:14px;color:var(--mute);line-height:1.5}
+
+/* flow diagram */
+.flow{position:relative;padding-bottom:46px;display:grid;grid-template-columns:1fr 1.05fr 1fr;gap:70px;margin-top:34px;align-items:center}
+.col-title{font-size:12px;font-weight:700;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.src{padding:20px 22px;margin-bottom:16px;position:relative}
+.src h4{margin:0 0 4px;font-size:17px;display:flex;align-items:center;gap:10px}
+.src .who{font-size:13px;color:var(--mute);margin-bottom:12px}
+.item{display:flex;align-items:center;gap:10px;font-size:14.5px;padding:7px 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}
+.item small{margin-left:auto;font-size:12px;color:var(--soft)}
+.ico{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.engine{padding:26px 26px 22px;text-align:left}
+.engine .orb{width:54px;height:54px;border-radius:16px;background:var(--aurora);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(168,85,247,.4);margin-bottom:14px}
+.engine h4{font-size:20px;margin:0 0 6px;letter-spacing:-.02em}
+.engine ol{margin:14px 0 0;padding:0;list-style:none;counter-reset:e}
+.engine li{counter-increment:e;display:flex;gap:12px;font-size:14.5px;line-height:1.45;padding:9px 0;border-top:1px solid var(--line)}
+.engine li:before{content:counter(e);width:22px;height:22px;border-radius:7px;background:#EEF0FF;color:#4338CA;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.out{padding:20px 22px;margin-bottom:16px}
+.out h4{margin:0 0 6px;font-size:17px;display:flex;align-items:center;gap:10px}
+.out p{margin:0;font-size:14px;color:var(--mute);line-height:1.5}
+svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.wire{fill:none;stroke:url(#wg);stroke-width:2.2;stroke-dasharray:6 7;animation:dash 1.2s linear infinite;opacity:.8}
+.wire.back{stroke:#94A3B8;stroke-dasharray:3 6}
+@keyframes dash{to{stroke-dashoffset:-26}}
+.note{margin-top:18px;padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.7);border:1px dashed rgba(15,23,42,.15);font-size:14px;color:var(--ink2);line-height:1.55;display:flex;gap:12px}
+
+/* stepper */
+.stepper{display:grid;grid-template-columns:340px 1fr;gap:22px;margin-top:30px}
+.steps{padding:10px}
+.steps button{width:100%;text-align:left;display:flex;gap:12px;align-items:center;padding:13px 14px;border-radius:14px;font-size:14.5px;font-weight:500;color:var(--ink2)}
+.steps button .k{width:28px;height:28px;border-radius:9px;background:rgba(15,23,42,.05);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;flex-shrink:0}
+.steps button.on{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(15,23,42,.08),0 6px 18px rgba(15,23,42,.05)}
+.steps button.on .k{background:var(--aurora);color:#fff}
+.steps button .mini{margin-left:auto}
+.pair{display:grid;grid-template-columns:1.1fr 1fr;gap:16px}
+.side{padding:26px 28px;min-height:420px;display:flex;flex-direction:column}
+.side .who{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;margin-bottom:16px}
+.side h3{font-size:24px;letter-spacing:-.02em;margin:0 0 10px;line-height:1.25}
+.side p{font-size:15.5px;line-height:1.6;color:var(--ink2);margin:0 0 14px}
+.side ul{margin:4px 0 0;padding:0;list-style:none}
+.side li{display:flex;gap:10px;font-size:14.5px;line-height:1.5;padding:8px 0;color:var(--ink2)}
+.bb{background:rgba(248,250,252,.9)}
+.src-line{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute);display:flex;gap:8px;align-items:flex-start}
+.ctrl{display:flex;align-items:center;gap:10px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap}
+.btn.pri{background:var(--ink);color:#fff}.btn.sec{background:#fff;border:1px solid var(--line)}
+.dots{display:flex;gap:6px;margin-left:auto}.dots i{width:8px;height:8px;border-radius:9px;background:rgba(15,23,42,.14)}.dots i.on{background:var(--ink);width:22px}
+.visual{margin:6px 0 16px;border-radius:16px;background:#F8FAFC;border:1px solid var(--line);padding:16px}
+.fade{animation:f .3s ease}@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* scorecard */
+table{width:100%;border-collapse:collapse}
+th{font-size:12px;font-weight:700;color:var(--mute);text-align:left;padding:16px 22px;border-bottom:1px solid var(--line)}
+td{font-size:15px;padding:16px 22px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.c{text-align:center;width:250px}
+.yes,.no,.par{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px}
+.yes{background:var(--okbg);color:var(--ok)}.no{background:var(--riskbg);color:var(--risk)}.par{background:var(--warnbg);color:var(--warn)}
+td .why{font-size:13px;color:var(--mute);margin-top:4px;line-height:1.45}
+
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.honest .card{padding:24px 26px}
+.honest h4{margin:0 0 12px;font-size:18px;display:flex;align-items:center;gap:10px}
+.honest li{font-size:15px;line-height:1.55;color:var(--ink2);padding:6px 0}
+.honest ul{margin:0;padding-left:18px}
+footer{padding:40px 0 60px;font-size:12.5px;color:var(--mute)}
+/* build section */
+.gantt2{padding:22px 26px}
+.g2row{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.g2row:first-of-type{border-top:0}
+.g2t{position:relative;height:30px}
+.g2t .bar{position:absolute;top:5px;height:20px;border-radius:7px;background:var(--aurora)}
+.g2t .bar.w{background:repeating-linear-gradient(135deg,#E2E8F0 0 6px,#F1F5F9 6px 12px);border:1px solid #CBD5E1}
+.g2t .grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(14,1fr)}
+.g2t .grid i{border-left:1px dashed rgba(15,23,42,.07)}
+.wk{display:grid;grid-template-columns:repeat(14,1fr);font-size:11px;color:var(--soft);font-weight:600}
+.wk span{padding-left:4px}
+.dlv{position:absolute;top:-3px;width:26px;height:26px;margin-left:-13px;border-radius:9px;background:#fff;border:2px solid var(--ink);font-size:9.5px;font-weight:800;display:flex;align-items:center;justify-content:center;z-index:2}
+.arch{display:grid;grid-template-columns:1fr;gap:12px;padding:22px 26px}
+.layer{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:stretch}
+.layer .lbl{font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center}
+.layer .boxes{display:grid;gap:10px}
+.bx{padding:14px 16px;border-radius:14px;background:#F8FAFC;border:1px solid var(--line)}
+.bx b{display:block;font-size:14.5px}.bx small{display:block;font-size:12.5px;color:var(--mute);margin-top:3px;line-height:1.4}
+.bx .tech{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;background:#EEF0FF;color:#4338CA}
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.role{padding:18px}
+.role b{display:block;font-size:14.5px;line-height:1.3;min-height:38px}
+.role .ded{margin-top:12px;height:7px;border-radius:9px;background:rgba(15,23,42,.07);overflow:hidden}
+.role .ded i{display:block;height:100%;background:var(--aurora)}
+.role small{display:block;font-size:12px;color:var(--mute);margin-top:8px;line-height:1.45}
+.price{display:grid;grid-template-columns:1.1fr 1fr;gap:16px}
+.big{font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.prow{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.prow:first-child{border-top:0}
+.hito{display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px}
+.hito .pct{font-weight:800;font-size:18px}
+.gets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.gets .card{padding:18px 20px;display:flex;gap:12px}
+.gets b{display:block;font-size:14.5px}.gets small{font-size:13px;color:var(--mute);line-height:1.45}
+
+</style>
+</head>
+<body>
+
+<div class="top"><div class="in">
+ <div class="brand"><span id="lg"></span>Duque <i>Obra</i><span style="font-weight:500;color:var(--mute);font-size:13.5px;margin-left:6px">· Cómo funciona</span></div>
+ <nav><a href="#datos">De dónde sale cada dato</a><a href="#flujo">Paso a paso</a><a href="#comparacion">Frente a Backbone</a><a href="#inversion">Qué construimos</a></nav>
+</div></div>
+
+<div class="wrap">
+
+ <div class="hero">
+  <div>
+   <div class="ai">Documento de apoyo · reunión con Esteban Duque</div>
+   <h1>Su equipo sigue trabajando igual. La plataforma hace el resto.</h1>
+   <div class="lead">Duque Obra no le pide a los arquitectos una herramienta nueva. Lee lo que ya suben a Dropbox, recibe los datos de plata validados por el equipo administrativo, y le entrega a Esteban una lectura clara de cada obra, y a cada cliente, su propio proyecto.</div>
+  </div>
+  <div class="keys">
+   <div class="card key"><div class="n">1</div><div><b>Nada cambia para los arquitectos</b><span>Actas y fotos se siguen subiendo a Dropbox, como hoy.</span></div></div>
+   <div class="card key"><div class="n">2</div><div><b>La plata entra validada</b><span>Pagos, presupuesto y cronograma los registra el equipo administrativo en un formulario.</span></div></div>
+   <div class="card key"><div class="n">3</div><div><b>Alguien lee y cruza todo por usted</b><span>La capa de inteligencia compara actas, presupuesto y cronograma, y le dice qué está pasando.</span></div></div>
+  </div>
+ </div>
+
+ <!-- ================= DATOS ================= -->
+ <section id="datos">
+  <div class="eyebrow">01 · De dónde sale cada dato</div>
+  <h2>Dos entradas, una lectura, y lo que recibe cada quien</h2>
+  <div class="lead" style="font-size:17px">No todo sale de Dropbox, y eso es a propósito. Lo que ya existe como archivo se lee de Dropbox. Lo que es plata y fechas se captura validado, porque es lo que el cliente ve como verdad sobre su obra.</div>
+
+  <div class="flow" id="flow">
+   <svg class="wires" id="wires"><defs><linearGradient id="wg" x1="0" x2="1"><stop offset="0" stop-color="#5B5BF7"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs></svg>
+   <div>
+    <div class="col-title">Entra</div>
+    <div class="card src" id="nDrop">
+     <h4><span class="ico" style="background:#E0F2FE;color:#0369A1" data-i="folder"></span>Dropbox</h4>
+     <div class="who">Lo sube el arquitecto, como hoy</div>
+     <div class="item">Actas de comité<small>se leen</small></div>
+     <div class="item">Fotos de avance<small>se ordenan por fecha</small></div>
+     <div class="item">Planos y documentos<small>se publican</small></div>
+    </div>
+    <div class="card src" id="nForm">
+     <h4><span class="ico" style="background:#ECFDF5;color:#047857" data-i="wallet"></span>Plataforma</h4>
+     <div class="who">Lo registra el equipo administrativo</div>
+     <div class="item">Pagos con soporte<small>validados</small></div>
+     <div class="item">Presupuesto y ajustes<small>validados</small></div>
+     <div class="item">Cronograma e hitos<small>validados</small></div>
+    </div>
+   </div>
+
+   <div class="card grad engine" id="nEng">
+    <div class="orb" data-i="spark" data-c="#fff"></div>
+    <div class="ai">Capa de inteligencia</div>
+    <h4>Lee, cruza y resume</h4>
+    <div style="font-size:14px;color:var(--mute);line-height:1.5">Corre sola en la nube, no depende de ningún computador encendido.</div>
+    <ol>
+     <li>Extrae los compromisos de cada acta y los compara con el acta anterior</li>
+     <li>Compara lo ejecutado contra el presupuesto y el cronograma pactados</li>
+     <li>Redacta la lectura del estado de cada obra, citando de dónde sale cada dato</li>
+     <li>Lo que va al cliente puede pasar primero por revisión del equipo administrativo</li>
+    </ol>
+   </div>
+
+   <div>
+    <div class="col-title">Sale</div>
+    <div class="card out" id="nEst">
+     <h4><span class="ico" style="background:#EEF0FF;color:#4338CA" data-i="grid"></span>Esteban</h4>
+     <p>Cada semana, y cuando él lo pida, qué cambió en todas sus obras: atrasos, sobrecostos y compromisos vencidos, con el acta o el pago que lo sustenta.</p>
+    </div>
+    <div class="card out" id="nCli">
+     <h4><span class="ico" style="background:#FDF2F8;color:#BE185D" data-i="users"></span>Cada cliente final</h4>
+     <p>Su propio proyecto y nada más: avance, pagos, cronograma y fotos, en una versión simple que el estudio puede revisar antes de publicar.</p>
+    </div>
+    <div class="card out" id="nAlta" style="border-style:dashed">
+     <h4><span class="ico" style="background:#FEF3C7;color:#B45309" data-i="plus"></span>Cliente nuevo</h4>
+     <p>La plataforma escribe en Dropbox al crear un cliente, cuando le arma su carpeta, y al guardar los soportes de pago en la subcarpeta Pagos.</p>
+    </div>
+   </div>
+  </div>
+
+  <div class="note"><span data-i="alert" data-c="#B45309"></span><div>El soporte de cada pago queda guardado en la carpeta Pagos de Dropbox, como hoy. Pero la cifra que ve el cliente sale del formulario validado, no de un Excel, porque un Excel compartido no controla errores de digitación ni copias en conflicto.</div></div>
+ </section>
+
+ <!-- ================= FLUJO ================= -->
+ <section id="flujo">
+  <div class="eyebrow">02 · Paso a paso</div>
+  <h2>El ciclo de una obra, y qué cambia frente a Backbone</h2>
+  <div class="lead" style="font-size:17px">Recorra los siete momentos. A la izquierda, cómo lo resuelve Duque Obra. A la derecha, lo que dice el alcance que Backbone le entregó. Use las flechas del teclado para avanzar.</div>
+
+  <div class="stepper">
+   <div class="card steps" id="steps"></div>
+   <div>
+    <div class="pair" id="pair"></div>
+    <div class="ctrl"><button class="btn sec" id="prev"><span data-i="chevL"></span>Anterior</button><button class="btn pri" id="next">Siguiente<span data-i="chevR" data-c="#fff"></span></button><div class="dots" id="dots"></div></div>
+   </div>
+  </div>
+ </section>
+
+ <!-- ================= COMPARACIÓN ================= -->
+ <section id="comparacion">
+  <div class="eyebrow">03 · Frente a Backbone</div>
+  <h2>Qué hace cada solución por usted</h2>
+  <div class="lead" style="font-size:17px">Todo lo de la columna de Backbone sale de lo que su propio alcance de trabajo dice por escrito.</div>
+
+  <div class="card" style="margin-top:26px;overflow:hidden">
+   <table>
+    <thead><tr><th>¿El sistema hace esto por usted?</th><th style="text-align:center">Backbone</th><th style="text-align:center">Duque Obra</th></tr></thead>
+    <tbody id="score"></tbody>
+   </table>
+  </div>
+
+  <div class="honest">
+   <div class="card">
+    <h4><span class="ico" style="background:#EEF0FF;color:#4338CA" data-i="spark" data-c="#5B5BF7"></span>Dónde está la diferencia real</h4>
+    <ul>
+     <li><b>Adopción.</b> Backbone le pide a cada arquitecto reportar dentro de su plataforma. Aquí siguen en Dropbox.</li>
+     <li><b>Inteligencia.</b> Backbone excluye por escrito el análisis automático de desviaciones y la extracción de datos desde archivos. Aquí es el centro del sistema.</li>
+     <li><b>Datos de arranque.</b> Backbone le traslada a Duque la conversión de cada proyecto a su plantilla. Aquí la limpieza del Dropbox es un paso del proyecto.</li>
+    </ul>
+   </div>
+   <div class="card">
+    <h4><span class="ico" style="background:#F1F5F9;color:#475569" data-i="check" data-c="#475569"></span>Siendo honestos: dónde Backbone está igual o mejor</h4>
+    <ul>
+     <li><b>Portal del cliente.</b> Su dashboard ya es maduro: Gantt, estado financiero, fotos y accesos por perfil. Aquí se construye algo equivalente, no superior.</li>
+     <li><b>Sitio web institucional.</b> Backbone lo incluye. Esta propuesta no.</li>
+     <li><b>Tiempo.</b> Equivalente. Backbone declara catorce semanas. Aquí son diez de desarrollo, con salida a producción en la semana diez, más cuatro de garantía.</li>
+    </ul>
+   </div>
+  </div>
+ </section>
+
+ <!-- ================= INVERSIÓN ================= -->
+ <section id="inversion">
+  <div class="eyebrow">04 · Qué construimos</div>
+  <h2>Cómo se construye, con quién y cuánto cuesta</h2>
+  <div class="lead" style="font-size:17px">Diez semanas de desarrollo, con salida a producción en la semana diez, y cuatro semanas de garantía. Al final, el código y la infraestructura quedan a nombre de Duque Arquitectura.</div>
+
+  <div class="card gantt2" style="margin-top:26px">
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><div style="font-weight:700;font-size:17px">Cronograma</div>
+    <div style="display:flex;gap:16px;font-size:12.5px;color:var(--mute);align-items:center"><span style="display:flex;gap:6px;align-items:center"><i style="width:18px;height:9px;border-radius:4px;background:var(--aurora);display:inline-block"></i>Desarrollo</span><span style="display:flex;gap:6px;align-items:center"><i style="width:18px;height:9px;border-radius:4px;background:repeating-linear-gradient(135deg,#E2E8F0 0 4px,#F8FAFC 4px 8px);border:1px solid #CBD5E1;display:inline-block"></i>Garantía</span><span style="display:flex;gap:6px;align-items:center"><span style="width:16px;height:16px;border-radius:5px;border:2px solid var(--ink);display:inline-block"></span>Entregable</span></div></div>
+   <div class="g2row" style="padding-top:0"><div></div><div class="wk" id="wk"></div></div>
+   <div id="g2"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin-top:16px">
+   <div class="card arch">
+    <div style="font-weight:700;font-size:17px;margin-bottom:4px">Arquitectura</div>
+    <div class="layer"><div class="lbl">Lo que se usa</div><div class="boxes" style="grid-template-columns:repeat(3,1fr)">
+     <div class="bx"><b>Panel de Esteban</b><small>Alta de proyectos, tablero y lecturas</small></div>
+     <div class="bx"><b>Captura administrativa</b><small>Presupuesto, pagos y cronograma</small></div>
+     <div class="bx"><b>Portal del cliente</b><small>Solo su proyecto, adaptado a celular</small></div>
+    </div></div>
+    <div class="layer"><div class="lbl">Aplicación</div><div class="boxes"><div class="bx"><b>Aplicación web</b><small>Una sola aplicación para los tres perfiles, con permisos distintos</small><span class="tech">Next.js</span></div></div></div>
+    <div class="layer"><div class="lbl">Inteligencia</div><div class="boxes" style="grid-template-columns:1fr 1fr">
+     <div class="bx"><b>Motor de métricas</b><small>Calcula desviaciones y atrasos con reglas fijas</small><span class="tech">Reglas determinísticas</span></div>
+     <div class="bx"><b>Capa de IA</b><small>Extrae compromisos y redacta la síntesis citando la fuente</small><span class="tech">Claude API</span></div>
+    </div></div>
+    <div class="layer"><div class="lbl">Datos y automatización</div><div class="boxes" style="grid-template-columns:1fr 1fr">
+     <div class="bx"><b>Base de datos y acceso</b><small>Usuarios y aislamiento por proyecto en la base de datos</small><span class="tech">Supabase · PostgreSQL</span></div>
+     <div class="bx"><b>Automatización</b><small>Crea carpetas, detecta archivos nuevos y corre tareas programadas</small><span class="tech">n8n · webhooks</span></div>
+    </div></div>
+    <div class="layer"><div class="lbl">Fuentes</div><div class="boxes" style="grid-template-columns:1fr 1fr">
+     <div class="bx"><b>Dropbox de Duque</b><small>La cuenta actual, sin costo adicional</small></div>
+     <div class="bx"><b>Correo</b><small>Credenciales, resumen semanal y avisos al cliente</small></div>
+    </div></div>
+   </div>
+
+   <div>
+    <div class="card" style="padding:22px 24px">
+     <div style="font-weight:700;font-size:17px">Equipo</div>
+     <div style="font-size:13.5px;color:var(--mute);margin-top:4px;line-height:1.5">Dos desarrolladores en paralelo, con liderazgo técnico, calidad y gestión del proyecto.</div>
+     <div id="team" style="margin-top:12px"></div>
+    </div>
+   </div>
+  </div>
+
+  <div class="price" style="margin-top:16px">
+   <div class="card grad" style="padding:26px 28px">
+    <div class="ai">Inversión de implementación</div>
+    <div style="display:flex;align-items:baseline;gap:12px;margin-top:12px"><div class="big" id="pImpl"></div><div style="font-size:18px;color:var(--mute);font-weight:600">+ IVA</div></div>
+    <div style="font-size:14px;color:var(--mute);margin-top:8px">Precio fijo para el alcance descrito. Incluye diagnóstico y organización del Dropbox, las siete fases, la puesta en producción con los proyectos activos cargados, la capacitación y cuatro semanas de garantía.</div>
+    <div style="margin-top:18px" id="pTot"></div>
+    <div style="font-weight:700;font-size:15px;margin-top:20px">Forma de pago propuesta</div>
+    <div id="hitos" style="margin-top:4px"></div>
+   </div>
+   <div class="card" style="padding:26px 28px">
+    <div class="eyebrow">Después de la entrega</div>
+    <div style="font-weight:700;font-size:20px;margin-top:6px">Lo que se paga cada mes</div>
+    <div style="font-size:13.5px;color:var(--mute);margin-top:6px;line-height:1.5">Los servicios de terceros quedan a nombre de Duque y se pagan al costo. Estimado para 15 proyectos con síntesis semanal, a una tasa de 4.000 pesos por dólar.</div>
+    <div id="fees" style="margin-top:12px"></div>
+    <div style="margin-top:16px;padding:16px 18px;border-radius:16px;background:linear-gradient(120deg,#EEF0FF,#FDF2F8)">
+     <div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:15px">Soporte y evolución</b><b style="font-size:17px" id="pSup"></b></div>
+     <div style="font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.5">Corrección de errores, ajustes menores, revisión periódica de la calidad de la IA y monitoreo. Respuesta en un día hábil para incidentes que impidan el uso y en tres días hábiles para los demás.</div>
+    </div>
+   </div>
+  </div>
+
+  <div class="gets">
+   <div class="card"><span class="ico" style="background:#EEF0FF;color:#4338CA" data-i="db"></span><div><b>Sistema en producción</b><small>Con los proyectos activos cargados, en la semana diez.</small></div></div>
+   <div class="card"><span class="ico" style="background:#ECFDF5;color:#047857" data-i="users"></span><div><b>Equipo capacitado</b><small>Manual de usuario, sesiones de capacitación y documentación técnica.</small></div></div>
+   <div class="card"><span class="ico" style="background:#FDF2F8;color:#BE185D" data-i="lock"></span><div><b>Código y accesos</b><small>El código fuente y la infraestructura quedan a nombre de Duque.</small></div></div>
+  </div>
+
+  <div class="note" style="margin-top:16px"><span data-i="alert" data-c="#B45309"></span><div>Fuera de este alcance, y cotizables por separado: sitio web institucional, cotización y contratos, cámaras en obra, aplicaciones móviles nativas, integración contable, pronósticos de costo o fecha final, y carga de proyectos ya cerrados.</div></div>
+ </section>
+
+ <footer>Duque Obra · documento de apoyo para la reunión con Duque Arquitectura · Pisteyo, septiembre de 2026. Las referencias a Backbone provienen del alcance de trabajo que esa firma entregó a Duque Arquitectura.</footer>
+</div>
+
+<script>
+const I={
+ folder:'<path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/>',
+ wallet:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M7 3.5h10"/><circle cx="16.5" cy="15" r="1.2"/>',
+ grid:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/>',
+ users:'<circle cx="9" cy="8" r="3.3"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17.5" cy="8.8" r="2.5"/><path d="M16 14.6c2.8.2 5 2 5 5.4"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ alert:'<path d="M12 9v4.5M12 17h.01"/><path d="M10.3 4.2 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/>',
+ chevL:'<path d="m14.5 5.5-6.5 6.5 6.5 6.5"/>', chevR:'<path d="m9.5 5.5 6.5 6.5-6.5 6.5"/>',
+ check:'<path d="m5 12.5 4.5 4.5L19 7.5"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>',
+ file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+ cam:'<path d="M4 8.5h3l2-2.5h6l2 2.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.8" r="3.4"/>',
+ db:'<ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/>',
+ lock:'<rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
+ eye:'<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+ msg:'<path d="M4 5.5h16v10H9l-5 4z"/>'
+};
+const SPARK='<path fill="C" stroke="none" d="M12 2.5c.7 5 3.1 7.4 8 8-4.9.6-7.3 3-8 8-.7-5-3.1-7.4-8-8 4.9-.6 7.3-3 8-8z"/><path fill="C" stroke="none" opacity=".7" d="M19 15.5c.3 1.9 1.1 2.7 3 3-1.9.3-2.7 1.1-3 3-.3-1.9-1.1-2.7-3-3 1.9-.3 2.7-1.1 3-3z"/>';
+function ic(n,s=18,c='currentColor',w=1.9){return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;display:block">${n==='spark'?SPARK.replaceAll('"C"','"'+c+'"'):I[n]}</svg>`}
+function logo(s){return `<svg width="${s}" height="${s}" viewBox="0 0 32 32"><defs><linearGradient id="lgx" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B5BF7"/><stop offset=".55" stop-color="#A855F7"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lgx)"/><path d="M9 24V8h6.5a8 8 0 0 1 0 16z" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M9 16h8" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".55"/></svg>`}
+document.getElementById('lg').innerHTML=logo(28);
+function hydrate(root=document){root.querySelectorAll('[data-i]').forEach(e=>{const big=e.classList.contains('orb');e.innerHTML=ic(e.dataset.i,big?26:18,e.dataset.c||'currentColor');e.removeAttribute('data-i')})}
+hydrate();
+
+/* ---------- wires ---------- */
+function wires(){
+ const f=document.getElementById('flow'),svg=document.getElementById('wires'),fr=f.getBoundingClientRect();
+ const r=id=>{const b=document.getElementById(id).getBoundingClientRect();return{l:b.left-fr.left,r:b.right-fr.left,t:b.top-fr.top,b:b.bottom-fr.top,cy:(b.top+b.bottom)/2-fr.top}};
+ const e=r('nEng'),A=r('nDrop'),B=r('nForm'),C=r('nEst'),D=r('nCli'),E=r('nAlta');
+ const c=(x1,y1,x2,y2,cls='wire')=>{const m=(x1+x2)/2;return `<path class="${cls}" d="M${x1} ${y1} C${m} ${y1} ${m} ${y2} ${x2} ${y2}"/>`};
+ const defs=svg.querySelector('defs').outerHTML;
+ svg.innerHTML=defs+c(A.r,A.cy,e.l,e.cy-40)+c(B.r,B.cy,e.l,e.cy+40)+c(e.r,e.cy-40,C.l,C.cy)+c(e.r,e.cy+10,D.l,D.cy)+(()=>{const Y=Math.max(A.b,B.b,e.b,E.b)+28,ex=(E.l+E.r)/2,x0=A.l-22,R=14;return `<path class="wire back" d="M${ex} ${E.b} L${ex} ${Y-R} Q${ex} ${Y} ${ex-R} ${Y} L${x0+R} ${Y} Q${x0} ${Y} ${x0} ${Y-R} L${x0} ${A.cy+R} Q${x0} ${A.cy} ${x0+R} ${A.cy} L${A.l} ${A.cy}"/><text x="${(ex+x0)/2}" y="${Y+18}" text-anchor="middle" font-size="12" fill="#64748B" font-family="Inter">Al crear un cliente, la plataforma arma su carpeta en Dropbox</text>`})();
+}
+addEventListener('resize',wires);addEventListener('load',wires);setTimeout(wires,300);
+
+/* ---------- steps ---------- */
+const STEPS=[
+ {t:'Crear un proyecto nuevo',tag:'diff',
+  us:{h:'Esteban lo crea en menos de un minuto, sin ayuda técnica',p:'Llena nombre, cédula o NIT y presupuesto. El sistema hace el resto en el mismo instante.',li:[['folder','Crea la carpeta del cliente en Dropbox con sus subcarpetas: Actas, Fotos, Pagos y Documentos'],['db','Crea el registro del proyecto, aislado de todos los demás'],['lock','Genera el usuario del cliente y le envía las credenciales por correo']]},
+  bb:{h:'Alta del proyecto dentro de su plataforma, con la información convertida a su plantilla',p:'El alta de proyectos con línea base es parte de su sistema. Pero su alcance deja a cargo de Duque convertir la información de cada proyecto a la plantilla estructurada antes del cierre de la semana seis, y ese trabajo no está dentro de las catorce semanas cotizadas.',src:'Alcance de Backbone: alta de proyectos y responsabilidades del cliente'}},
+ {t:'El arquitecto reporta la obra',tag:'diff',
+  us:{h:'Nada cambia: sube el acta y las fotos a Dropbox, como hoy',p:'No hay usuario nuevo para el arquitecto, ni formulario, ni aplicación que aprender. El sistema detecta el archivo nuevo y lo procesa.',li:[['file','El acta del comité, en el formato que ya usan'],['cam','Las fotos, sin renombrarlas; la fecha se toma del archivo'],['check','Sin convención de nombres que alguien pueda olvidar']]},
+  bb:{h:'Cada arquitecto diligencia un reporte semanal dentro de la plataforma',p:'Su Módulo 2 establece que el reporte semanal se llena directamente en su sistema. Es un hábito nuevo para cada equipo de obra, y es exactamente el riesgo de adopción que Esteban describió: pagar por una herramienta que el equipo termina usando a medias.',src:'Alcance de Backbone: Módulo 2, reporte semanal del arquitecto'}},
+ {t:'Se registra la plata y las fechas',tag:'eq',
+  us:{h:'El equipo administrativo registra pagos, presupuesto y cronograma',p:'Una o dos personas, no los arquitectos. Cada pago se registra con su soporte adjunto en el mismo formulario, y el sistema valida montos y fechas al guardar.',li:[['wallet','Pagos con soporte adjunto'],['file','Presupuesto y órdenes de cambio'],['check','Validación al momento de capturar, no después']]},
+  bb:{h:'Los datos financieros y de avance también se registran dentro de su plataforma',p:'Su sistema maneja línea base, avance y estado financiero del contrato, que se alimentan con información capturada en la plataforma. En este punto las dos soluciones son equivalentes.',src:'Alcance de Backbone: línea base, validación y estado financiero'}},
+ {t:'El sistema lee y cruza todo',tag:'diff',
+  us:{h:'Extrae los compromisos de cada acta y los compara con la anterior',p:'Sabe qué se acordó, quién quedó a cargo y si ya se cumplió. Si un compromiso aparece en dos actas seguidas, lo marca y cuenta los días que lleva abierto. También compara lo ejecutado contra lo pactado.',li:[['file','Compromisos extraídos de cada acta'],['alert','Compromisos repetidos entre actas, con días abiertos'],['check','El equipo administrativo puede revisar los compromisos antes de mostrarlos al cliente']]},
+  bb:{h:'Excluido por escrito',p:'Su alcance marca como fuera de alcance la extracción automática de datos desde archivos y el análisis automático de desviación. Sus alertas son reglas de umbral: avisan si un número cruza un límite, pero no leen actas, no cruzan información y no explican la causa. Ninguna de las dos propuestas incluye pronósticos de costo o fecha final.',src:'Alcance de Backbone: capacidades de inteligencia artificial fuera de alcance, y Módulo 3'}},
+ {t:'Esteban recibe la lectura',tag:'diff',
+  us:{h:'Cada semana, qué cambió y por qué, en palabras simples',p:'No una tabla que interpretar: una lectura de cada obra, por ejemplo que un edificio va 12% sobre presupuesto por una orden de cambio y el cliente no ha sido informado. Las cifras las calcula el sistema con reglas fijas; la IA las redacta y cada frase muestra el acta o el pago de donde sale. Además llega un resumen por correo, y Esteban puede pedir una actualización cuando quiera.',li:[['alert','Atrasos, sobrecostos y compromisos vencidos'],['file','Cada afirmación enlazada a su documento'],['eye','Todo verificable, sin confiar a ciegas en el sistema']]},
+  bb:{h:'Un tablero consolidado de gerencia con cifras',p:'Esteban ve números y semáforos de todos los proyectos. La interpretación de qué está pasando y por qué sigue dependiendo de que alguien revise y cruce la información a mano.',src:'Alcance de Backbone: tablero de gerencia'}},
+ {t:'El cliente ve su proyecto',tag:'eq',
+  us:{h:'Un portal con su proyecto y nada más',p:'Avance, pagos, cronograma planeado contra real y fotos, más una versión simple de la lectura del estado. Cada cliente entra con su usuario, solo ve lo suyo, y recibe un aviso por correo cuando hay una actualización.',li:[['lock','Aislamiento garantizado en la base de datos, probado en cada despliegue'],['eye','Los archivos se muestran con enlaces temporales, nunca con rutas de Dropbox'],['cam','Fotos de avance en una línea de tiempo']]},
+  bb:{h:'Un dashboard del cliente maduro',p:'Su Módulo 4 ya incluye estado general, avance semanal, Gantt planeado contra ejecutado, estado financiero, reporte fotográfico y acceso restringido. Su Módulo 6 suma perfiles, auditoría y notificaciones. Aquí Backbone es sólido y la diferencia no está en esta pantalla.',src:'Alcance de Backbone: Módulos 4 y 6'}},
+ {t:'Preguntarle al proyecto',tag:'f2',
+  us:{h:'Preguntar en lenguaje natural y recibir la respuesta con su fuente',p:'Por ejemplo: qué compromisos vencen esta semana, o cuándo se acordó la acometida en una obra. Responde solo con las actas, pagos y cronogramas de Duque, citando el documento. Queda como segunda fase.',li:[['msg','Preguntas de Esteban sobre todo su portafolio'],['msg','Preguntas del cliente sobre su propio proyecto'],['file','Toda respuesta cita su documento']]},
+  bb:{h:'Excluido por escrito',p:'Su alcance marca como fuera de alcance la consulta conversacional del cliente sobre sus documentos.',src:'Alcance de Backbone: capacidades de inteligencia artificial fuera de alcance'}}
+];
+const TAG={diff:['t-diff','Diferencia'],eq:['t-eq','Equivalente'],f2:['t-f2','Fase 2']};
+let cur=0;
+function renderStep(){
+ const s=STEPS[cur];
+ document.getElementById('steps').innerHTML=STEPS.map((x,i)=>`<button class="${i===cur?'on':''}" data-s="${i}"><span class="k">${i+1}</span>${x.t}<span class="mini tag ${TAG[x.tag][0]}" style="font-size:10.5px;padding:3px 8px">${TAG[x.tag][1]}</span></button>`).join('');
+ document.getElementById('pair').innerHTML=`
+  <div class="card grad side fade">
+   <div class="who"><span style="display:flex">${logo(22)}</span><span>Duque Obra</span><span class="tag ${TAG[s.tag][0]}" style="margin-left:auto">${TAG[s.tag][1]}</span></div>
+   <h3>${s.us.h}</h3><p>${s.us.p}</p>
+   <ul>${s.us.li.map(([i,t])=>`<li><span style="width:28px;height:28px;border-radius:9px;background:#EEF0FF;color:#4338CA;display:flex;align-items:center;justify-content:center;flex-shrink:0">${ic(i,15)}</span>${t}</li>`).join('')}</ul>
+  </div>
+  <div class="card side bb fade">
+   <div class="who" style="color:var(--mute)"><span style="width:22px;height:22px;border-radius:7px;background:#CBD5E1;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800">B</span>Con Backbone</div>
+   <h3 style="color:var(--ink2)">${s.bb.h}</h3><p>${s.bb.p}</p>
+   <div class="src-line">${ic('file',15)}<span>Fuente: ${s.bb.src}</span></div>
+  </div>`;
+ document.getElementById('dots').innerHTML=STEPS.map((x,i)=>`<i class="${i===cur?'on':''}"></i>`).join('');
+ document.getElementById('prev').style.opacity=cur?1:.4;
+ document.getElementById('next').innerHTML=cur<STEPS.length-1?'Siguiente'+ic('chevR',16,'#fff'):'Ver comparación'+ic('chevR',16,'#fff');
+}
+document.getElementById('steps').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b){cur=+b.dataset.s;renderStep()}});
+document.getElementById('prev').onclick=()=>{if(cur>0){cur--;renderStep()}};
+document.getElementById('next').onclick=()=>{if(cur<STEPS.length-1){cur++;renderStep()}else location.hash='#comparacion'};
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<STEPS.length-1){cur++;renderStep()}if(e.key==='ArrowLeft'&&cur>0){cur--;renderStep()}});
+hydrate();renderStep();
+
+/* ---------- scorecard ---------- */
+const SC=[
+ ['Los arquitectos siguen trabajando como hoy, sin aprender una herramienta nueva','no','Su Módulo 2 exige el reporte semanal dentro de la plataforma','yes','Siguen subiendo actas y fotos a Dropbox'],
+ ['Le dice qué se acordó en cada acta y si se cumplió','no','No aparece en su alcance','yes','Compara cada acta con la anterior'],
+ ['Le explica en palabras simples cómo va cada obra','no','Excluye por escrito el análisis automático de desviación','yes','Lectura diaria con la fuente de cada dato'],
+ ['Le avisa si una obra se sale de presupuesto o de tiempo sin que usted lo revise','par','Alertas por umbral, sin explicar la causa','yes','Alertas por umbral más la causa, con su fuente'],
+ ['Cada cliente ve su propio proyecto: avance, pagos, cronograma y fotos','yes','Módulo 4, maduro','yes','Equivalente'],
+ ['Alguien organiza el Dropbox actual antes de arrancar, sin que sea trabajo de Duque','no','Le traslada a Duque la conversión, fuera del tiempo cotizado','par','Se dimensiona como paso del proyecto'],
+ ['Incluye sitio web institucional','yes','Incluido en su alcance','no','No incluido en esta propuesta'],
+ ['El cliente puede preguntarle al sistema sobre su proyecto','no','Excluido por escrito','par','Segunda fase']
+];
+const B={yes:['yes','check','Sí'],no:['no','x','No'],par:['par','alert','Parcial']};
+document.getElementById('score').innerHTML=SC.map(([q,a,aw,b,bw])=>`<tr><td style="font-weight:500">${q}</td><td class="c"><span class="${B[a][0]}">${ic(B[a][1],13,'currentColor',2.6)}${B[a][2]}</span><div class="why">${aw}</div></td><td class="c"><span class="${B[b][0]}">${ic(B[b][1],13,'currentColor',2.6)}${B[b][2]}</span><div class="why">${bw}</div></td></tr>`).join('');
+
+/* ---------- inversión ---------- */
+const PRECIO={impl:70000000, iva:0.19, soporte:2000000,
+ hitos:[['Firma del contrato',30,'Inicio'],['Inteligencia funcionando en pruebas',40,'Semana 7'],['Sistema en producción',30,'Semana 10']]};
+const cop=n=>'$'+Math.round(n).toLocaleString('es-CO');
+document.getElementById('pImpl').textContent=cop(PRECIO.impl);
+document.getElementById('pTot').innerHTML=`<div class="prow"><span>Implementación</span><b>${cop(PRECIO.impl)}</b></div><div class="prow"><span>IVA 19%</span><span>${cop(PRECIO.impl*PRECIO.iva)}</span></div><div class="prow"><span style="font-weight:700">Total</span><b>${cop(PRECIO.impl*(1+PRECIO.iva))}</b></div>`;
+document.getElementById('hitos').innerHTML=PRECIO.hitos.map(([t,p,w])=>`<div class="hito"><span class="pct">${p}%</span><span>${t}<div style="font-size:12.5px;color:var(--mute)">${w}</div></span><b>${cop(PRECIO.impl*p/100)}</b></div>`).join('');
+document.getElementById('pSup').textContent=cop(PRECIO.soporte)+' + IVA';
+const FEES=[['Alojamiento de la aplicación','$80.000'],['Base de datos y autenticación','$100.000'],['Inteligencia artificial','$80.000 a $160.000'],['Dominio y monitoreo','$20.000'],['Dropbox','Plan actual, sin costo adicional']];
+document.getElementById('fees').innerHTML=FEES.map(([a,b])=>`<div class="prow"><span>${a}</span><span style="font-weight:600">${b}</span></div>`).join('')+`<div class="prow"><span style="font-weight:700">Terceros al mes</span><b>$280.000 a $360.000</b></div>`;
+/* cronograma */
+document.getElementById('wk').innerHTML=Array.from({length:14},(_,i)=>`<span>S${i+1}</span>`).join('');
+const PH=[['1. Diagnóstico y diseño','Dropbox, formatos, modelo de datos, pantallas',0,2,[[2,'E1'],[2,'E2']]],['2. Base del sistema','Acceso, aislamiento, alta de proyectos y Dropbox',1,4,[]],['3. Captura administrativa','Presupuesto, pagos y cronograma',3,5,[[5,'E3']]],['4. Ingesta e inteligencia','Archivos, compromisos, métricas y síntesis',4,7,[[7,'E4']]],['5. Portal y tablero','Portal del cliente, tablero y notificaciones',6,8,[[8,'E5']]],['6. Pruebas y piloto','Aislamiento, ajuste de la IA, piloto con 2 o 3 obras',7,9,[[9,'E6']]],['7. Puesta en producción','Carga de proyectos, capacitación, salida',9,10,[[10,'E7']]],['Garantía','Corrección de errores y ajuste de la síntesis',10,14,[]]];
+document.getElementById('g2').innerHTML=PH.map(([t,d,a,b,dl])=>`<div class="g2row"><div><div style="font-size:14.5px;font-weight:600">${t}</div><div style="font-size:12px;color:var(--mute);margin-top:2px">${d}</div></div><div class="g2t"><div class="grid">${'<i></i>'.repeat(14)}</div><div class="bar ${t==='Garantía'?'w':''}" style="left:${a/14*100}%;width:${(b-a)/14*100}%"></div>${[...new Set(dl.map(x=>x[0]))].map(w=>`<div class="dlv" style="left:${w/14*100}%">${dl.filter(x=>x[0]===w).map(x=>x[1]).join('')==='E1E2'?'E1':dl.filter(x=>x[0]===w)[0][1]}</div>`).join('')}</div></div>`).join('')+`<div style="font-size:12.5px;color:var(--mute);margin-top:14px;line-height:1.6">E1 diagnóstico de Dropbox, plantillas de carga, diseño de pantallas y modelo de datos · E3 módulos de alta y captura en pruebas · E4 ingesta e inteligencia en pruebas · E5 portal, tablero y notificaciones en pruebas · E6 informe de pruebas y aislamiento · E7 sistema en producción, capacitación, documentación, código y accesos</div>`;
+/* equipo */
+const TEAM=[['Líder técnico y arquitecto de software',30,'Todo el proyecto','Diseño de la arquitectura, seguridad y calidad del código'],['Desarrollador full-stack senior',100,'Todo el proyecto','Aplicación, portal del cliente y tablero'],['Desarrollador backend e integraciones',100,'Fases 2 a 6','Dropbox, automatización, métricas y capa de IA'],['Analista de calidad',50,'Fases 5 a 7','Pruebas funcionales y de aislamiento entre clientes'],['Líder de proyecto y analista funcional',15,'Todo el proyecto','Seguimiento, entregables y capacitación']];
+document.getElementById('team').innerHTML=TEAM.map(([r,d,f,w],i)=>`<div style="padding:12px 0;${i?'border-top:1px solid var(--line)':''}"><div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><b style="font-size:14px">${r}</b><span style="font-size:12.5px;font-weight:700;color:#4338CA;white-space:nowrap">${d}%</span></div><div style="height:6px;border-radius:9px;background:rgba(15,23,42,.07);margin-top:8px;overflow:hidden"><i style="display:block;height:100%;width:${d}%;background:var(--aurora)"></i></div><div style="font-size:12.5px;color:var(--mute);margin-top:6px">${f} · ${w}</div></div>`).join('');
+hydrate();
+setTimeout(wires,100);
+</script>
+</body>
+</html>
