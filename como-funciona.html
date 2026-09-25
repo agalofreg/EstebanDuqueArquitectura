@@ -140,6 +140,65 @@ footer{padding:40px 0 60px;font-size:12.5px;color:var(--mute)}
 .gets .card{padding:18px 20px;display:flex;gap:12px}
 .gets b{display:block;font-size:14.5px}.gets small{font-size:13px;color:var(--mute);line-height:1.45}
 
+/* ---------- móvil ---------- */
+@media (max-width:860px){
+ .top .in{padding:10px 16px;gap:8px;flex-wrap:wrap}
+ .top .brand span[style]{display:none}
+ .top nav{margin-left:0;width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .top nav::-webkit-scrollbar{display:none}
+ .top nav a{white-space:nowrap;padding:7px 12px;font-size:13px;background:rgba(255,255,255,.6)}
+ body{overflow-x:clip}
+ .wrap{padding:0 16px}
+ section{padding:44px 0 12px;scroll-margin-top:100px}
+ h1{font-size:34px;margin:10px 0 12px}
+ h2{font-size:26px}
+ .lead,.lead[style]{font-size:16px !important}
+ .hero{grid-template-columns:1fr;gap:22px;padding:34px 0 0}
+ .flow{grid-template-columns:1fr;gap:6px;padding-bottom:0;margin-top:24px}
+ svg.wires{display:none}
+ .src,.out{margin-bottom:12px}
+ .engine{margin:6px 0 18px}
+ .stepper{grid-template-columns:1fr;gap:12px;margin-top:20px}
+ .steps{display:flex;gap:6px;overflow-x:auto;padding:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .steps::-webkit-scrollbar{display:none}
+ .steps button{width:auto;flex:0 0 auto;white-space:nowrap;padding:9px 12px;font-size:13.5px}
+ .steps button .mini{display:none}
+ .pair{grid-template-columns:1fr;gap:12px}
+ .side{min-height:0;padding:20px}
+ .side h3{font-size:20px}
+ .side p{font-size:15px}
+ .ctrl .btn{padding:10px 14px}
+ table,tbody{display:block}
+ thead{display:none}
+ #score tr{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+ #score tr:last-child{border-bottom:0}
+ #score td{border-bottom:0;padding:12px 14px}
+ #score td:first-child{grid-column:1/-1;padding-bottom:4px;font-size:15px}
+ #score td.c{width:auto;padding-top:6px}
+ #score td.c:nth-child(2):before{content:"Alternativa";display:block;font-size:11px;font-weight:700;color:var(--mute);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+ #score td.c:nth-child(3):before{content:"Duque Obra";display:block;font-size:11px;font-weight:700;color:#4338CA;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+ .honest{grid-template-columns:1fr;gap:12px}
+ .honest .card{padding:20px}
+ .gantt2{padding:18px 14px}
+ .g2row{grid-template-columns:96px 1fr;gap:8px}
+ .g2row > div:first-child > div:first-child{font-size:12.5px !important}
+ .g2row > div:first-child > div:last-child{display:none}
+ .wk{font-size:8px}.wk span{padding-left:1px}
+ .dlv{width:20px;height:20px;margin-left:-10px;font-size:8px;border-radius:7px}
+ .wrap [style*="grid-template-columns:1.35fr"]{grid-template-columns:1fr !important}
+ .wrap [style*="justify-content:space-between"]{flex-wrap:wrap;gap:10px}
+ .arch{padding:18px}
+ .layer{grid-template-columns:1fr;gap:8px}
+ .layer .boxes,.layer .boxes[style]{grid-template-columns:1fr !important}
+ .team{grid-template-columns:1fr 1fr}
+ .price{grid-template-columns:1fr}
+ .price .card{padding:22px 18px !important}
+ .big{font-size:40px}
+ .prow{font-size:14px;gap:10px}
+ .hito{grid-template-columns:44px 1fr auto;font-size:13.5px}
+ .gets{grid-template-columns:1fr}
+ footer{padding:30px 0 40px}
+}
 </style>
 </head>
 <body>
